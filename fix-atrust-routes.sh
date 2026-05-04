@@ -10,7 +10,7 @@ if ! ifconfig "$ATRUST_IF" &>/dev/null; then
 fi
 
 # 找出所有经由 aTrust 的 192.168.100.x 路由
-routes=$(netstat -rn | awk -v iface="$ATRUST_IF" '$6 == iface {print $1}' | grep '^192\.168\.100')
+routes=$(netstat -rn | awk -v iface="$ATRUST_IF" '$NF == iface {print $1}' | grep '^192\.168\.100')
 
 if [ -z "$routes" ]; then
     echo "aTrust VPN is connected, but no 192.168.100.x routes were injected, nothing to do."
