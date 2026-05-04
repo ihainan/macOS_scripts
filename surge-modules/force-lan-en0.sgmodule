@@ -1,0 +1,8 @@
+#!name=Force LAN via en0
+#!desc=Force 192.168.100.0/24 through en0, bypass aTrust VPN tunnel
+
+[Proxy]
+force-lan = direct, interface=en0, bypass-tun=true
+
+[Rule]
+IP-CIDR,192.168.100.0/24,force-lan,no-resolve
